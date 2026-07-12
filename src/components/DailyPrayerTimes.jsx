@@ -70,7 +70,7 @@ export default function DailyPrayerTimes() {
 
       {/* Footer note */}
       <p className="text-center text-silver-500/60 text-[0.65rem] mt-4 tracking-wide">
-        Source: Aladhan API · Umm Al-Qura method
+        Method: {times?.methodName || 'Moonsighting Committee Worldwide'}
       </p>
     </div>
   );

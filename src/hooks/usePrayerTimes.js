@@ -34,6 +34,7 @@ export function usePrayerTimes() {
           Asr: t.Asr,
           Maghrib: t.Maghrib,
           Isha: t.Isha,
+          methodName: json.data.meta?.method?.name || 'Moonsighting Committee Worldwide',
         });
       })
       .catch((err) => setError(err.message))
