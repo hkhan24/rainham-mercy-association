@@ -1,0 +1,303 @@
+@import "tailwindcss";
+
+/* ===== RMA Design System — Blue & Red Premium Theme ===== */
+@theme {
+  /* Core Palette — Deep Blues & Rich Reds */
+  --color-navy-950: #060B18;
+  --color-navy-900: #0A1628;
+  --color-navy-800: #112240;
+  --color-navy-700: #1A3358;
+  --color-navy-600: #234670;
+  --color-red-950: #1A0608;
+  --color-red-900: #2D0A0F;
+  --color-red-800: #5C1520;
+  --color-red-700: #8B1E30;
+  --color-silver-600: #7A8BA8;
+  --color-silver-500: #94A3C0;
+  --color-silver-400: #B0BDD4;
+  --color-silver-300: #CDD6E8;
+  --color-silver-200: #E2E8F4;
+  --color-ice-100: #F0F4FA;
+  --color-ice-200: #E1E8F4;
+  --color-ice-300: #D0DAE8;
+
+  /* Fonts */
+  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans: 'Montserrat', 'Segoe UI', Tahoma, sans-serif;
+  --font-arabic: 'Amiri', 'Traditional Arabic', serif;
+
+  /* Animations */
+  --animate-fade-in: fade-in 0.8s ease-out forwards;
+  --animate-slide-up: slide-up 0.7s ease-out forwards;
+  --animate-slide-up-delay-1: slide-up 0.7s 0.15s ease-out forwards;
+  --animate-slide-up-delay-2: slide-up 0.7s 0.3s ease-out forwards;
+  --animate-slide-up-delay-3: slide-up 0.7s 0.45s ease-out forwards;
+  --animate-float: float 6s ease-in-out infinite;
+  --animate-shimmer: shimmer 3s ease-in-out infinite;
+  --animate-glow: glow-pulse 2.5s ease-in-out infinite;
+  --animate-particle: particle-rise 12s linear infinite;
+  --animate-rotate-slow: rotate-slow 120s linear infinite;
+  --animate-pulse-soft: pulse-soft 4s ease-in-out infinite;
+}
+
+/* ===== Keyframes ===== */
+@keyframes fade-in {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  0%, 100% { opacity: 0.7; }
+  50% { opacity: 1; }
+}
+
+@keyframes glow-pulse {
+  0%, 100% { box-shadow: 0 0 20px rgba(139, 30, 48, 0.15); }
+  50% { box-shadow: 0 0 40px rgba(139, 30, 48, 0.35); }
+}
+
+@keyframes particle-rise {
+  0% {
+    transform: translateY(100vh) translateX(0) scale(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+    transform: translateY(80vh) translateX(10px) scale(1);
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-10vh) translateX(-20px) scale(0.3);
+    opacity: 0;
+  }
+}
+
+@keyframes rotate-slow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+@keyframes pulse-soft {
+  0%, 100% { transform: scale(1); opacity: 0.6; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+}
+
+@keyframes reveal-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* ===== Base Styles ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #F0F4FA;
+  font-family: 'Montserrat', sans-serif;
+  color: #112240;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ===== Scroll Reveal ===== */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ===== Islamic Geometric Pattern (CSS-only) ===== */
+.geometric-pattern {
+  --pattern-color: rgba(139, 30, 48, 0.06);
+  --pattern-size: 60px;
+  background-image:
+    /* Octagonal star overlay */
+    linear-gradient(45deg, var(--pattern-color) 25%, transparent 25%),
+    linear-gradient(-45deg, var(--pattern-color) 25%, transparent 25%),
+    linear-gradient(135deg, var(--pattern-color) 25%, transparent 25%),
+    linear-gradient(-135deg, var(--pattern-color) 25%, transparent 25%),
+    /* Diamond grid */
+    linear-gradient(45deg, transparent 48%, var(--pattern-color) 48%, var(--pattern-color) 52%, transparent 52%),
+    linear-gradient(-45deg, transparent 48%, var(--pattern-color) 48%, var(--pattern-color) 52%, transparent 52%);
+  background-size:
+    var(--pattern-size) var(--pattern-size),
+    var(--pattern-size) var(--pattern-size),
+    var(--pattern-size) var(--pattern-size),
+    var(--pattern-size) var(--pattern-size),
+    var(--pattern-size) var(--pattern-size),
+    var(--pattern-size) var(--pattern-size);
+}
+
+.geometric-pattern-light {
+  --pattern-color: rgba(139, 30, 48, 0.04);
+  --pattern-size: 50px;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 24px,
+      var(--pattern-color) 24px,
+      var(--pattern-color) 25px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 24px,
+      var(--pattern-color) 24px,
+      var(--pattern-color) 25px
+    ),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 34px,
+      var(--pattern-color) 34px,
+      var(--pattern-color) 35px
+    ),
+    repeating-linear-gradient(
+      -45deg,
+      transparent,
+      transparent 34px,
+      var(--pattern-color) 34px,
+      var(--pattern-color) 35px
+    );
+}
+
+/* ===== Red Ornamental Divider ===== */
+.gold-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  padding: 8px 0;
+}
+
+.gold-divider::before,
+.gold-divider::after {
+  content: '';
+  flex: 1;
+  max-width: 140px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #8B1E30, transparent);
+}
+
+/* ===== Star Decoration ===== */
+.star-accent::before {
+  content: '✦';
+  color: #8B1E30;
+  margin-right: 10px;
+  font-size: 0.75em;
+}
+
+.star-accent::after {
+  content: '✦';
+  color: #8B1E30;
+  margin-left: 10px;
+  font-size: 0.75em;
+}
+
+/* ===== Glassmorphism Card ===== */
+.glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(139, 30, 48, 0.2);
+  border-radius: 1.5rem;
+}
+
+.glass-card-light {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(139, 30, 48, 0.2);
+  border-radius: 1.5rem;
+}
+
+/* ===== Floating Particles ===== */
+.particle {
+  position: absolute;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #8B1E30, transparent);
+  pointer-events: none;
+  animation: particle-rise var(--duration, 12s) var(--delay, 0s) linear infinite;
+}
+
+/* ===== Section Label Badge ===== */
+.section-badge {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0.5rem 1.25rem;
+  border-radius: 9999px;
+  border: 1px solid rgba(139, 30, 48, 0.25);
+}
+
+/* ===== Scrollbar Styling ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #E1E8F4;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #8B1E30;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A52538;
+}
+
+/* ===== Mobile Menu ===== */
+.mobile-menu-backdrop {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+
+.mobile-menu-backdrop.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+.mobile-menu-panel {
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.mobile-menu-panel.open {
+  transform: translateX(0);
+}
+
+/* ===== Selection Styling ===== */
+::selection {
+  background: rgba(139, 30, 48, 0.3);
+  color: #0A1628;
+}
